@@ -9,7 +9,7 @@ resource "azurerm_public_ip" "vm01mgmtpip" {
   allocation_method   = "Static"
 
   tags = {
-    Name        = "${var.environment}-vm01-mgmt-public-ip"
+    #Name        = "${var.environment}-vm01-mgmt-public-ip"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -26,7 +26,7 @@ resource "azurerm_public_ip" "vm01selfpip" {
   allocation_method   = "Static"
 
   tags = {
-    Name        = "${var.environment}-vm01-self-public-ip"
+    #Name        = "${var.environment}-vm01-self-public-ip"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -43,7 +43,7 @@ resource "azurerm_public_ip" "pubvippip" {
   allocation_method   = "Static"
 
   tags = {
-    Name        = "${var.environment}-pubvip-public-ip"
+    #Name        = "${var.environment}-pubvip-public-ip"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -111,7 +111,7 @@ resource "azurerm_network_security_group" "main" {
   }
 
   tags = {
-    Name        = "${var.environment}-bigip-sg"
+    #Name        = "${var.environment}-bigip-sg"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -135,7 +135,7 @@ resource "azurerm_network_interface" "vm01-mgmt-nic" {
   }
 
   tags = {
-    Name        = "${var.environment}-vm01-mgmt-int"
+    #Name        = "${var.environment}-vm01-mgmt-int"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -290,7 +290,7 @@ resource "azurerm_linux_virtual_machine" "f5vm01" {
   }
 
   tags = {
-    Name        = "${var.environment}-f5vm01"
+    #Name        = "${var.environment}-f5vm01"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -314,7 +314,7 @@ resource "azurerm_virtual_machine_extension" "f5vm01-run-startup-cmd" {
   SETTINGS
 
   tags = {
-    Name        = "${var.environment}-f5vm01-startup-cmd"
+    #Name        = "${var.environment}-f5vm01-startup-cmd"
     environment = var.environment
     owner       = var.owner
     group       = var.group

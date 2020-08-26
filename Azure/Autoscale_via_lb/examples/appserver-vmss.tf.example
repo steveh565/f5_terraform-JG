@@ -48,7 +48,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "backendvmss" {
   }
 
   tags = {
-    Name        = "${var.environment}-backend"
+    #Name        = "${var.environment}-backend"
     environment = var.environment
     owner       = var.owner
     group       = var.group

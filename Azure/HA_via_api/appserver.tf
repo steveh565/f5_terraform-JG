@@ -15,7 +15,7 @@ resource "azurerm_network_interface" "backend01-ext-nic" {
   }
 
   tags = {
-    Name        = "${var.environment}-backend01-ext-int"
+    #Name        = "${var.environment}-backend01-ext-int"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -67,7 +67,7 @@ resource "azurerm_linux_virtual_machine" "backendvm" {
   }
 
   tags = {
-    Name        = "${var.environment}-backend01"
+    #Name        = "${var.environment}-backend01"
     environment = var.environment
     owner       = var.owner
     group       = var.group

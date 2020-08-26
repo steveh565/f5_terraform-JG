@@ -15,7 +15,6 @@ resource "azurerm_network_interface" "backend01-ext-nic" {
   }
 
   tags = {
-    Name        = "${var.environment}-backend01-ext-int"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -36,7 +35,8 @@ locals {
 #!/bin/bash
 apt-get update -y
 apt-get install -y docker.io
-docker run -d -p 80:80 --net=host --restart unless-stopped vulnerables/web-dvwa
+#docker run -d -p 80:80 --net=host --restart unless-stopped vulnerables/web-dvwa
+docker run -dit --restart unless-stopped --name juiceShop -p 80:3000 bkimminich/juice-shop
 EOF
 }
 
@@ -67,7 +67,7 @@ resource "azurerm_linux_virtual_machine" "backendvm" {
   }
 
   tags = {
-    Name        = "${var.environment}-backend01"
+    #Name        = "${var.environment}-backend01"
     environment = var.environment
     owner       = var.owner
     group       = var.group

@@ -7,7 +7,7 @@ resource "azurerm_public_ip" "lbpip" {
   sku                 = "Standard"
   resource_group_name = azurerm_resource_group.main.name
   allocation_method   = "Static"
-  domain_name_label   = "${var.prefix}lbpip"
+  domain_name_label   = lower("${var.prefix}lbpip")
 }
 
 # Create Azure LB

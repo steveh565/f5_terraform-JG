@@ -59,7 +59,7 @@ resource "azurerm_network_security_group" "main" {
   }
 
   tags = {
-    Name        = "${var.environment}-bigip-sg"
+    #Name        = "${var.environment}-bigip-sg"
     environment = var.environment
     owner       = var.owner
     group       = var.group
@@ -202,7 +202,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "f5vmss" {
   }
 
   tags = {
-    Name        = "${var.environment}-f5vmss"
+    #Name        = "${var.environment}-f5vmss"
     environment = var.environment
     owner       = var.owner
     group       = var.group
