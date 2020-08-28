@@ -23,3 +23,11 @@ resource "azurerm_subnet" "External" {
   resource_group_name  = azurerm_resource_group.main.name
   address_prefix       = var.subnets["subnet2"]
 }
+
+# Create Internal Subnet
+resource "azurerm_subnet" "Internal" {
+  name                 = "Internal"
+  virtual_network_name = azurerm_virtual_network.main.name
+  resource_group_name  = azurerm_resource_group.main.name
+  address_prefix       = var.subnets["subnet3"]
+}

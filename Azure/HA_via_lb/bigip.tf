@@ -523,7 +523,7 @@ resource "local_file" "vm_ts_file" {
 }
 
 resource "null_resource" "f5vm01_DO" {
-  depends_on = [azurerm_virtual_machine_extension.f5vm01-run-startup-cmd]
+  depends_on = [azurerm_virtual_machine_extension.f5vm01-run-startup-cmd, local_file.vm01_do_file]
   # Running DO REST API
   provisioner "local-exec" {
     command = <<-EOF
@@ -536,7 +536,7 @@ resource "null_resource" "f5vm01_DO" {
 }
 
 resource "null_resource" "f5vm02_DO" {
-  depends_on = [azurerm_virtual_machine_extension.f5vm02-run-startup-cmd]
+  depends_on = [azurerm_virtual_machine_extension.f5vm02-run-startup-cmd, local_file.vm02_do_file, null_resource.f5vm01_DO]
   # Running DO REST API
   provisioner "local-exec" {
     command = <<-EOF
@@ -549,7 +549,7 @@ resource "null_resource" "f5vm02_DO" {
 }
 
 resource "null_resource" "f5vm01_TS" {
-  depends_on = [null_resource.f5vm01_DO]
+  depends_on = [null_resource.f5vm01_DO, local_file.vm_ts_file]
   # Running TS REST API
   provisioner "local-exec" {
     command = <<-EOF
@@ -560,7 +560,7 @@ resource "null_resource" "f5vm01_TS" {
 }
 
 resource "null_resource" "f5vm02_TS" {
-  depends_on = [null_resource.f5vm02_DO]
+  depends_on = [null_resource.f5vm02_DO, local_file.vm_ts_file]
   # Running TS REST API
   provisioner "local-exec" {
     command = <<-EOF
@@ -571,7 +571,7 @@ resource "null_resource" "f5vm02_TS" {
 }
 
 resource "null_resource" "f5vm_AS3" {
-  depends_on = [null_resource.f5vm01_TS, null_resource.f5vm02_TS]
+  depends_on = [null_resource.f5vm01_TS, null_resource.f5vm02_TS, local_file.vm_as3_file]
   # Running AS3 REST API
   provisioner "local-exec" {
     command = <<-EOF
