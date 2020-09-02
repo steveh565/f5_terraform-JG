@@ -148,4 +148,10 @@ done
 echo -e "\n"$(date) "Removing temporary RPM install packages"
 rm -rf /var/config/rest/downloads/*.rpm
 
-sleep 5
+sleep 15
+
+# Refresh restnoded
+echo -e "\n"$(date) "Restarting restnoded"
+bigstart restart restnoded
+
+sleep 15
